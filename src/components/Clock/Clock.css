@@ -1,0 +1,18 @@
+.headerClock {
+  margin-top: 10px;
+}
+.clock {
+  display: inline-block;
+  border: 2px solid blue;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.icon-cancel {
+  width: 20px;
+  margin-top: auto;
+  margin-left: 5px;
+  position: absolute;
+  cursor: pointer;
+}

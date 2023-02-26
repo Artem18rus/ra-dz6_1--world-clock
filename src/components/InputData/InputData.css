@@ -1,0 +1,23 @@
+.form-data {
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+  margin-top: 20px;
+}
+
+input {
+  padding: 5px;
+}
+
+.name {
+}
+
+.time-zone {
+}
+
+.btn {
+  height: 50%;
+  padding: 5px;
+  margin-top: auto;
+  cursor: pointer;
+}

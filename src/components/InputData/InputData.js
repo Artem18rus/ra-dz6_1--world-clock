@@ -48,7 +48,7 @@ function InputData() {
             type="text"
             className="inputTimeZone"
             value={newTimeZone}
-            placeholder="Введите временную зону"
+            placeholder="В формате 'ч.мин'"
             onChange={changeTimeZone}
           />
         </div>

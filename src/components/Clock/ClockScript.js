@@ -6,24 +6,29 @@ class ClockScript extends React.Component {
     this.iconCancel = require("./icon-cancel.png");
     this.dataZoneHours = this.props.fieldItem.zone.split(".");
 
-    this.date = new Date();
-    this.date.setHours(this.date.getHours() + Number(this.dataZoneHours[0]));
+    this.hoursGrin = new Date().getHours() + new Date().getTimezoneOffset() / 60; // 0 часовой пояс
+    this.minutesGrin =
+      new Date().getMinutes() + new Date().getTimezoneOffset() / 60 + 4;
 
+    this.newHours = this.hoursGrin + Number(this.dataZoneHours[0]); // изменить на нужный часовой пояс
+    
     if (this.dataZoneHours[1] && this.dataZoneHours[0].includes("-")) {
-      this.date.setMinutes(
-        this.date.getMinutes() - Number(this.dataZoneHours[1])
-      );
+      this.newMinutes = this.minutesGrin - Number(this.dataZoneHours[1]);
     } else if (this.dataZoneHours[1]) {
-      this.date.setMinutes(
-        this.date.getMinutes() + Number(this.dataZoneHours[1])
-      );
+      this.newMinutes = this.minutesGrin + Number(this.dataZoneHours[1]);
+    } else if (!this.dataZoneHours[1]) {
+      this.newMinutes = new Date().getMinutes();
     }
 
-    this.state = { time: this.date };
+    this.state = {
+      time: new Date(new Date().setHours(this.newHours, this.newMinutes))
+    };
   }
   componentDidMount() {
     this.update = setInterval(() => {
-      this.setState({ time: this.date });
+      this.setState({
+        time: new Date(new Date().setHours(this.newHours, this.newMinutes))
+      });
     }, 1 * 1000);
   }
   componentWillUnmount() {
